@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <title>Vuejs - Element - LocalStorage</title>
+</head>
+<body>
+<div class="container" id="app">
+    <div class="row justify-content-md-center align-items-center" style="height: 100vh">
+        <div class="col-md-6">
+            <h1 class="text-center"> <i class="fas fa-dumbbell"></i> {{title}}</h1>
+
+            <div class="form-group">
+              <input type="text" name="task" id="task" class="form-control" 
+              placeholder="type a task" v-model="newTask" @keyup.enter="addTask">
+            </div>
+            <button type="button" class="btn btn-primary btn-lg" @click="addTask">Add <i class="fa fa-plus " aria-hidden="true"></i></button>
+
+            <div class="row mt-3">
+                <div class="col-md-12" v-for="(item, index) in tasks" :key="index">
+                    <div :class="['alert',item.state ? 'alert-success' : 'alert-danger' ]" role="alert">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>{{item.name}}</div>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-info btn-sm mr-1" @click="updateTask(index)">
+                                    <i class="fa fa-edit" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm" @click="deleteTask(index)">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+            
+    
+</div>
+    
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script> 
+</body>
+</html>
